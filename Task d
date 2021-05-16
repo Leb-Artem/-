@@ -1,0 +1,27 @@
+global _start
+
+code_zero equ 48
+N equ 2
+
+section .text
+
+_start:
+mov rax, 2
+mov rbx, 3
+mov rcx, N
+mov rdx, 0
+
+go L_1
+
+L_1:
+mov rdx, rbx
+imul rdx, rcx
+add rdx, rax
+
+call asm_exit
+
+asm_exit:
+mov rax, 60
+xor rdi, rdi
+syscall
+ret
