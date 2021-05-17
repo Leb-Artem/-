@@ -1,0 +1,33 @@
+global _start
+ 
+section .bss
+buffer:       resb 2
+
+section .text
+_start:
+ call func
+ ret
+ 
+func:
+ sub rsp, 12
+ mov rbx, 7
+ mov rcx, 8
+ mov [rsp+12], rbx
+ mov [rsp+8], rcx
+ mov rax, 7
+ add rax, 8
+ mov [rsp+4], rax
+ add rsp, 12
+ 
+ L_PR:
+    add al, 38
+    mov [buffer+1], al
+    mov al, 49
+    mov [buffer], al
+    
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, buffer
+    mov rdx, 2
+    syscall
+ ret
