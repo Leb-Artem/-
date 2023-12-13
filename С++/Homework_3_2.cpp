@@ -40,6 +40,7 @@ int main() {
     a.row = 4;
     p.row = 4;
     n.row = 3;
+    
     //numbers
     a.number = 10;
     p.number = 15;
