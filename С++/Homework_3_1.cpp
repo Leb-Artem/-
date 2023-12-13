@@ -1,35 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <map>
 #include <list>
+#include <map>
+#include <vector>
 
-
-template <typename T> void reverse(std::vector<T>& p_collection){
+template <typename T> void reverse(std::vector<T>& p_collection) {
     int size = p_collection.size();
-    for(int i = 0; i < size/2; ++i){
-        T temp = p_collection[i];
+    for (int i = 0; i < size / 2; ++i) {
+        T tmp = p_collection[i];
         p_collection[i] = p_collection[size - 1 - i];
-        p_collection[size - 1 - i] = temp;
+        p_collection[size - 1 - i] = tmp;
     }
 }
-template <typename T> void reverse(std::list<T>& p_collection){
-    for(auto it = p_collection.begin(); it != p_collection.end();){
+
+template <typename T> void reverse(std::list<T>& p_collection) {
+    for (auto it = p_collection.begin(); it != p_collection.end();) {
         p_collection.push_front(*it);
         p_collection.erase(it++);
     }
 }
 
-int main(){
-    std::vector<double> v{1, 2, 3, 4, 5, 6, 7, 8, 9};   // {} - список инициализации, заполняющий требуемыми вектор
-    std::list<double> l{1,2,3,4,5};
-    printf(" vector before: "); for (auto i : v) printf("%2.0f", i);
-    reverse(v);
-    printf("\n vecotr after: "); for (auto i : v) printf("%2.0f", i);
+int main() {
 
-    printf("\n lis tbefore: "); for (auto i : l) printf("%2.0f", i);
+    std::vector<double> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };   // {} - список инициализации, заполняющий требуемыми вектор
+    std::list<double> l{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    printf("list b: "); for (auto i : l) printf("%2.0f", i);
     reverse(l);
-    printf("\n list after: \n"); for (auto i : l) printf("%2.0f", i);
+    printf("\nvector b: "); for (auto i : v) printf("%2.0f", i);
+    reverse(v);
+    printf("\nlist a: "); for (auto i : l) printf("%2.0f", i);
+    printf("\nvector a: "); for (auto i : v) printf("%2.0f", i);
     return 0;
 }
-
-
